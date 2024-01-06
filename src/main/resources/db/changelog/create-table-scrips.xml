@@ -19,8 +19,124 @@
             </column>
         </createTable>
 
+        <createTable tableName="genres">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="films">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="year" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="genre_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_film_genre_id" references="genres(id)"/>
+            </column>
+            <column name="minimal_age" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="duration_in_minutes" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="file_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_film_file_id" references="files(id)"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="halls">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="row_count" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="place_count" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="film_sessions">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="file_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_film_sessions_file_id" references="files(id)"/>
+            </column>
+            <column name="hall_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_film_sessions_halls_id" references="halls(id)"/>
+            </column>
+            <column name="start_time" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="end_time" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="users">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="full_name" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="tickets">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="session_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_tickets_session_id" referencedTableName="film_sessions"
+                             referencedColumnNames="id"/>
+            </column>
+            <column name="row_number" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="row_number" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="bigint">
+                <constraints foreignKeyName="fk_tickets_user_id" referencedTableName="users"
+                             referencedColumnNames="id"/>
+            </column>
+        </createTable>
+
         <rollback>
-          <dropTable tableName="files"/>
+            <dropTable tableName="files"/>
+            <dropTable tableName="genres"/>
+            <dropTable tableName="films"/>
+            <dropTable tableName="halls"/>
+            <dropTable tableName="film_sessions"/>
+            <dropTable tableName="users"/>
+            <dropTable tableName="tickets"/>
         </rollback>
 
     </changeSet>
