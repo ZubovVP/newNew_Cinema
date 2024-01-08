@@ -120,9 +120,6 @@
             <column name="row_number" type="int">
                 <constraints nullable="false"/>
             </column>
-            <column name="row_number" type="int">
-                <constraints nullable="false"/>
-            </column>
             <column name="user_id" type="bigint">
                 <constraints foreignKeyName="fk_tickets_user_id" referencedTableName="users"
                              referencedColumnNames="id"/>
