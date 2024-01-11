@@ -4,7 +4,7 @@ import org.mapstruct.*;
 import ru.zubov.newcinema.model.Hall;
 import ru.zubov.newcinema.model.dto.HallDto;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "cdi")
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface HallMapper {
     Hall hallDtoToHall(HallDto hallDto);
 

@@ -4,7 +4,7 @@ import org.mapstruct.*;
 import ru.zubov.newcinema.model.File;
 import ru.zubov.newcinema.model.dto.FileDto;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "cdi")
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface FileMapper {
     File fileDtoToFile(FileDto fileDto);
 

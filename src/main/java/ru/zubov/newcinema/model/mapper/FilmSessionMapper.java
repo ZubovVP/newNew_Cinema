@@ -4,7 +4,7 @@ import org.mapstruct.*;
 import ru.zubov.newcinema.model.FilmSession;
 import ru.zubov.newcinema.model.dto.FilmSessionDto;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "cdi")
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface FilmSessionMapper {
     FilmSession filmSessionDtoToFilmSession(FilmSessionDto filmSessionDto);
 

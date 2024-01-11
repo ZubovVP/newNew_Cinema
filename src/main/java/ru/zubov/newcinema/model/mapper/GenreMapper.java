@@ -4,7 +4,7 @@ import org.mapstruct.*;
 import ru.zubov.newcinema.model.Genre;
 import ru.zubov.newcinema.model.dto.GenreDto;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "cdi")
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface GenreMapper {
     Genre genreDtoToGenre(GenreDto genreDto);
 

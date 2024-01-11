@@ -4,7 +4,7 @@ import org.mapstruct.*;
 import ru.zubov.newcinema.model.Ticket;
 import ru.zubov.newcinema.model.dto.TicketDto;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "cdi")
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface TicketMapper {
     Ticket ticketDtoToTicket(TicketDto ticketDto);
 
