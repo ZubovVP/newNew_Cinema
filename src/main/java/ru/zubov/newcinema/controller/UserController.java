@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.zubov.newcinema.model.User;
@@ -16,8 +15,8 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/users")
 public class UserController {
-    private UserService userService;
-    private UserMapper userMapper;
+    private final UserService userService;
+    private final UserMapper userMapper;
 
     public UserController(UserService userService, UserMapper userMapper) {
         this.userService = userService;
