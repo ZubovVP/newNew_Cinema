@@ -28,6 +28,9 @@ public class SecurityConfig {
                 .defaultSuccessUrl("/hello", true)
                 .loginPage("/login").permitAll()
                 .and()
+                .authorizeHttpRequests((authorize) -> authorize
+                        .anyRequest().authenticated()
+                )
                 .build();
     }
 }
